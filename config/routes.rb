@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
   get 'about', to: 'pages#about'
-  resources :contacts
-  # this rewrites the url of contacts#new to be /contact-us
-  get 'contact-us', to: 'contacts#new'
+  # this generates only the create routes from the 7 default routes provided by rails
+  resources :contacts, only: [:create]
+  # this has "/contact-us" point to the contacts#new route. The route pathname is also updated to new_contact
+  get 'contact-us', to: 'contacts#new', as: 'new_contact'
 end
