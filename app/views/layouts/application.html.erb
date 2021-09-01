@@ -32,6 +32,15 @@
       </div>
     </nav>
     
+    <div class="container">
+      <!-- Flash is a hash so it has a key (type) and a value (msg) -->
+      <% flash.each do |type, msg| %>
+          <!-- This is the rails way of creating a div -->
+          <!-- The class we are using in this div is from bootstrap and it 
+          gives us a green success box or red error box -->
+          <%= content_tag :div, msg, class: "alert alert-#{type}" %>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
